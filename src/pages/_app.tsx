@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import { Container, MantineProvider, ColorSchemeProvider, ColorScheme } from "@mantine/core";
+import { Container, MantineProvider, ColorSchemeProvider, ColorScheme, Box } from "@mantine/core";
 import { useHotkeys } from '@mantine/hooks'
 import { getCookie, setCookie } from 'cookies-next';
 import type { AppProps, AppContext } from 'next/app';
@@ -52,10 +52,11 @@ export default function App(props: AppProps & { colorScheme: ColorScheme, browse
               <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <Navbar browserLanguage={browserLanguage} />
+            <Box sx={{ minHeight: 'calc(100vh - 50px)' }}>
+              <Navbar browserLanguage={browserLanguage} />
 
-            <Component {...pageProps} />
-
+              <Component {...pageProps} />
+            </Box>
             <Footer />
 
           </Container>
