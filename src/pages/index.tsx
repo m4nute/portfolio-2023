@@ -40,10 +40,10 @@ const Home: React.FC<HomeProps> = ({ browserLanguage }) => {
 
 
   return (
-    <Box sx={{ paddingBottom: '1em', paddingTop: '.1em' }}>
+    <Box sx={{ paddingBottom: '.7em', paddingTop: '.1em' }}>
       <Transition mounted={mounted} transition='pop' duration={400} timingFunction='ease'>
         {(styles) => <div style={styles}>
-          <Container sx={{ marginTop: '2.5em' }}>
+          <Container sx={{ marginTop: '1.5em' }}>
             <Title color={dark ? 'white' : 'black'} order={4} italic weight={500}>Manuel Gudiño</Title>
           </Container>
         </div>}
@@ -52,13 +52,13 @@ const Home: React.FC<HomeProps> = ({ browserLanguage }) => {
       <Container sx={{ marginTop: '.35em' }}>
         <Text color={dark ? '' : 'black'} size='md' lineClamp={2} sx={{ width: '75%', fontSize: '95%' }}>
 
-          <Transition mounted={belowText && (!lang ? browserLanguage : lang) === 'ES' && spanish} transition='fade' duration={400} exitDuration={200} timingFunction='ease' onExited={() => setSpanish(false)}>
+          <Transition mounted={belowText && (!lang ? browserLanguage : lang) === 'ES' && spanish} transition='fade' duration={400} exitDuration={200} timingFunction='ease' onExited={() => setTimeout(function () { setSpanish(false) }, 50)}>
             {(styles) => <div style={styles}>
               Soy un desarrollador web enfocado en construir aplicaciones desde cero, prestando mucha atención al detalle, UX y rendimiento.
             </div>}
           </Transition >
 
-          <Transition mounted={belowText && (!lang ? browserLanguage : lang) === 'EN' && !spanish} transition='fade' duration={400} exitDuration={200} timingFunction='ease' onExited={() => setSpanish(true)}>
+          <Transition mounted={belowText && (!lang ? browserLanguage : lang) === 'EN' && !spanish} transition='fade' duration={400} exitDuration={200} timingFunction='ease' onExited={() => setTimeout(function () { setSpanish(true) }, 50)}>
             {(styles) => <div style={styles}>
               I'm a web developer specializing on building performant applications from scratch, with a focus on detail and user experience.
             </div>}
@@ -66,7 +66,7 @@ const Home: React.FC<HomeProps> = ({ browserLanguage }) => {
         </Text>
       </Container>
 
-      <Container sx={{ marginTop: '2.5em' }}>
+      <Container sx={{ marginTop: '1.75em' }}>
         <Transition mounted={projects && (!lang ? browserLanguage : lang) === 'EN' && !spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
           {(styles) =>
             <div style={styles}>
@@ -108,18 +108,18 @@ const Home: React.FC<HomeProps> = ({ browserLanguage }) => {
 
       </Container>
 
-      <Container sx={{ marginTop: '2em' }}>
+      <Container sx={{ marginTop: '1.75em' }}>
         <Transition mounted={projects && (!lang ? browserLanguage : lang) === 'EN' && !spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
           {(styles) =>
             <div style={styles}>
-              <Title italic color={dark ? 'white' : 'black'} order={4} sx={{ paddingBottom: '.4em' }} weight={500}>Stack</Title>
+              <Title italic color={dark ? 'white' : 'black'} order={4} sx={{ paddingBottom: '.4em' }} weight={500}>My Stack</Title>
             </div>}
         </Transition>
 
         <Transition mounted={projects && (!lang ? browserLanguage : lang) === 'ES' && spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
           {(styles) =>
             <div style={styles}>
-              <Title italic color={dark ? 'white' : 'black'} order={4} sx={{ paddingBottom: '.4em' }} weight={500}>Stack</Title>
+              <Title italic color={dark ? 'white' : 'black'} order={4} sx={{ paddingBottom: '.4em' }} weight={500}>Mi Stack</Title>
             </div>}
         </Transition>
 
@@ -137,7 +137,7 @@ const Home: React.FC<HomeProps> = ({ browserLanguage }) => {
           </div>}
         </Transition>
 
-        <Flex direction='column' sx={{ marginTop: '1em' }}>
+        <Flex direction='column' sx={{ marginTop: '.6em' }}>
           <Transition mounted={projects && (!lang ? browserLanguage : lang) === 'EN' && !spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
             {(styles) => <div style={styles}>
               <Flex>
@@ -176,7 +176,7 @@ const Home: React.FC<HomeProps> = ({ browserLanguage }) => {
         </Flex>
       </Container>
 
-      <Container sx={{ marginTop: '2em', marginBottom: '1em' }}>
+      <Container sx={{ marginTop: '1.75em', marginBottom: '1em' }}>
 
         <Transition mounted={projects && (!lang ? browserLanguage : lang) === 'EN' && !spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
           {(styles) =>
