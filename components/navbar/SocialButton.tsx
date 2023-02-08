@@ -1,7 +1,6 @@
 import React from 'react'
 import { ActionIcon, Tooltip, useMantineColorScheme } from '@mantine/core';
 import { BrandLinkedin, BrandGithub, Mail, FileDescription } from 'tabler-icons-react';
-import Router from 'next/router';
 
 function SocialButton({ label }: { label: string }) {
 
@@ -9,9 +8,10 @@ function SocialButton({ label }: { label: string }) {
     const dark = colorScheme === 'dark';
 
     const icons: { [key: string]: JSX.Element } = {
-        LinkedIn: <BrandLinkedin onClick={() => Router.push('https://github.com/m4nute')} size={24} strokeWidth={1.5} color={dark ? 'white' : '#505050'} />,
-        Email: <Mail size={24} strokeWidth={1.5} color={dark ? 'white' : '#505050'} />,
-        GitHub: <BrandGithub onClick={() => Router.push('https://www.linkedin.com/in/manuelgudi%C3%B1o/')} size={24} strokeWidth={1.5} color={dark ? 'white' : '#505050'} />,
+        LinkedIn: <BrandLinkedin onClick={() => window.open('https://www.linkedin.com/in/manuelgudi%C3%B1o/', '_blank')} size={24} strokeWidth={1.5} color={dark ? 'white' : '#505050'} />,
+        Email: <Mail size={24} strokeWidth={1.5} color={dark ? 'white' : '#505050'} onClick={() => window.location.href = 'mailto:mgudinocontacto@gmail.com?'} />,
+        GitHub: <BrandGithub onClick={() => window.open('https://github.com/m4nute', '_blank')} size={24}
+            strokeWidth={1.5} color={dark ? 'white' : '#505050'} />,
         'CV': <FileDescription size={24} strokeWidth={1.5} color={dark ? 'white' : '#505050'} />,
     };
 

@@ -31,46 +31,50 @@ export default function App(props: AppProps & { colorScheme: ColorScheme, browse
   useHotkeys([['mod+J', () => toggleColorScheme()]]);
 
   return (
-    <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
-      <MantineProvider
-        withGlobalStyles
-        withNormalizeCSS
-        theme={{
-          fontFamily: 'Segoe UI, sans-serif',
-          colorScheme: colorScheme,
-          colors: {
-            'light': ['#E1E1E1', '#fcfcfc', '#373737', '#E1E1E1', '#E1E1E1', '#E1E1E1', '#E1E1E1', '#E1E1E1', '#E1E1E1', '#E1E1E1',]
-          }
-        }}
-      >
-        <Container fluid sx={(theme) => ({
-          backgroundColor: colorScheme === 'dark' ? '#1c1c1c' : theme.colors.light[1],
-          minHeight: '100vh',
-          transition: '.2s all ease',
-        })}>
-          <Container sx={{
-            maxWidth: 700,
-            margin: '0 auto',
-            paddingLeft: '0',
-            paddingRight: '0',
-          }}>
-            <Head>
-              <title>Manuel Gudiño</title>
-              <meta name="description" content="Made by Manuel Gudiño" />
-              <link rel="icon" href="/favicon.ico" />
-            </Head>
+    <>
+      <Head>
+        <title>Manuel Gudiño</title>
+        <meta name="description" content="Made by Manuel Gudiño" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
+        <MantineProvider
+          withGlobalStyles
+          withNormalizeCSS
+          theme={{
+            fontFamily: 'Segoe UI, sans-serif',
+            colorScheme: colorScheme,
+            colors: {
+              'light': ['#E1E1E1', '#fcfcfc', '#373737', '#E1E1E1', '#E1E1E1', '#E1E1E1', '#E1E1E1', '#E1E1E1', '#E1E1E1', '#E1E1E1',]
+            }
+          }}
+        >
+          <Container fluid sx={(theme) => ({
+            backgroundColor: colorScheme === 'dark' ? '#1c1c1c' : theme.colors.light[1],
+            minHeight: '100vh',
+            transition: '.2s all ease',
+          })}>
+            <Container sx={{
+              maxWidth: 700,
+              margin: '0 auto',
+              paddingLeft: '0',
+              paddingRight: '0',
+              '::-webikit-scrollbar': {
+                width: 10
+              }
+            }}>
+              <Box sx={{ minHeight: 'calc(100vh - 50px)' }}>
+                <Navbar browserLanguage={browserLanguage} />
 
-            <Box sx={{ minHeight: 'calc(100vh - 50px)' }}>
-              <Navbar browserLanguage={browserLanguage} />
+                <Component {...pageProps} browserLanguage={browserLanguage} />
+              </Box>
+              <Footer browserLanguage={browserLanguage} />
 
-              <Component {...pageProps} browserLanguage={browserLanguage} />
-            </Box>
-            <Footer browserLanguage={browserLanguage} />
-
+            </Container>
           </Container>
-        </Container>
-      </MantineProvider>
-    </ColorSchemeProvider>
+        </MantineProvider>
+      </ColorSchemeProvider>
+    </>
   )
 }
 

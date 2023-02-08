@@ -17,7 +17,7 @@ function Navbar({ browserLanguage }: { browserLanguage: string }) {
     return (
         <Transition mounted={mounted} transition='fade' duration={300} timingFunction='ease'>
             {(styles) => <div style={styles}>
-                <Container sx={{ paddingTop: '0.75em' }}>
+                <Container sx={{ paddingTop: '0.75em', }}>
                     <Container sx={{ display: 'flex', justifyContent: 'space-between', padding: '0.5em 1em', borderRadius: '15px', position: 'sticky', zIndex: 99, backgroundColor: dark ? '#292929' : '#ededed' }}>
                         <Group spacing='sm'>
                             <SocialButton label='LinkedIn' />
