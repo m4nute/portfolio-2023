@@ -11,7 +11,7 @@ interface FooterProps {
 function Footer({ browserLanguage }: FooterProps) {
 
     const [mounted, setMounted] = useState(false)
-    const { height } = useViewportSize();
+    const { height, width } = useViewportSize();
 
     const { lang } = useLanguage()
 
@@ -26,13 +26,13 @@ function Footer({ browserLanguage }: FooterProps) {
 
             <Container sx={{ height: 50, flexShrink: 0, paddingLeft: 0, paddingRight: 0 }}>
 
-                <Transition mounted={mounted && (!lang ? browserLanguage : lang) === 'ES' && spanish} transition='fade' duration={400} exitDuration={200} timingFunction='ease' onExited={() => { height > 970 ? setTimeout(function () { setSpanish(false) }, 50) : setSpanish(false) }}>
+                <Transition mounted={mounted && (!lang ? browserLanguage : lang) === 'ES' && spanish} transition='fade' duration={400} exitDuration={200} timingFunction='ease' onExited={() => { height > 970 && width > 650 ? setTimeout(function () { setSpanish(false) }, 50) : setSpanish(false) }}>
                     {(styles) => <div style={styles}>
                         <Divider size='sm' />
                     </div>}
                 </Transition>
 
-                <Transition mounted={mounted && (!lang ? browserLanguage : lang) === 'EN' && !spanish} transition='fade' duration={400} exitDuration={200} timingFunction='ease' onExited={() => { height > 970 ? setTimeout(function () { setSpanish(true) }, 50) : setSpanish(true) }}>
+                <Transition mounted={mounted && (!lang ? browserLanguage : lang) === 'EN' && !spanish} transition='fade' duration={400} exitDuration={200} timingFunction='ease' onExited={() => { height > 970 && width > 650 ? setTimeout(function () { setSpanish(true) }, 50) : setSpanish(true) }}>
                     {(styles) => <div style={styles}>
                         <Divider size='sm' />
                     </div>}

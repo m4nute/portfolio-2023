@@ -27,8 +27,8 @@ interface ItemProps extends React.ComponentPropsWithoutRef<'div'> {
 
 const SelectItem = forwardRef<HTMLDivElement, ItemProps>(
     ({ image, label, description, ...others }: ItemProps, ref) => (
-        <div ref={ref} {...others} style={{ paddingRight: 3, paddingLeft: 7, paddingBottom: 5, paddingTop: 5, position: 'relative', zIndex: 99 }}>
-            <Group noWrap sx={{ display: 'flex', gap: 10, width: '70%' }}>
+        <div ref={ref} {...others} style={{ paddingBottom: 5, paddingTop: 5, position: 'relative', zIndex: 99 }}>
+            <Group noWrap sx={{ display: 'flex', gap: 10 }}>
                 <Avatar size='sm' src={image} sx={{ padding: 0 }} />
                 <div>
                     <Text size="sm">{label}</Text>
@@ -52,7 +52,7 @@ export default function LanguageSelect({ browserLanguage }: { browserLanguage: s
         <>
             <Select
                 sx={{
-                    width: '6rem', height: 36.79, backgroundColor: dark ? '#373737' : '#E1E1E1', borderRadius: '10px', transition: '.2s all ease', ":hover": { backgroundColor: dark ? '#434343' : '#CBCBCB' }
+                    width: '8rem', height: 36.79, backgroundColor: dark ? '#373737' : '#E1E1E1', borderRadius: '10px', transition: '.2s all ease', ":hover": { backgroundColor: dark ? '#434343' : '#CBCBCB' }
                 }}
                 placeholder="Lang"
                 itemComponent={SelectItem}

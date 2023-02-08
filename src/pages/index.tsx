@@ -14,7 +14,7 @@ const Home: React.FC<HomeProps> = ({ browserLanguage }) => {
   const { colorScheme } = useMantineColorScheme();
   const dark = colorScheme === 'dark';
 
-  const { height } = useViewportSize();
+  const { height, width } = useViewportSize();
 
   const { lang } = useLanguage()
 
@@ -41,33 +41,32 @@ const Home: React.FC<HomeProps> = ({ browserLanguage }) => {
     { title: 'PedaStore', desc: spanish ? "Esta fui mi primera interacción con Nextjs, por lo que no tenía idea de cómo funcionaban SSR y SSG. De todas maneras, decidí empezar a codear y fui aprendiendo en el camino. PedaStore es un E-commerce como cualquier otro, pero me sirvió mucho para aprender lo que tenía que aprender." : "This was my first interaction with Nextjs, so I had no idea how SSG and SSR worked. Nevertheless, I started coding and learned along the way. PedaStore, despite being a standard E-commerce platform, really helped me to learn and understand how Nextjs and TailwindCSS work." }
   ]
 
-
   return (
     <Box sx={{ paddingBottom: '.7em', paddingTop: '.1em' }}>
       <Transition mounted={mounted} transition='pop' duration={400} timingFunction='ease'>
         {(styles) => <div style={styles}>
-          <Container sx={{ marginTop: '1.5em' }}>
+          <Box sx={{ marginTop: '1.5em' }}>
             <Title color={dark ? 'white' : 'black'} order={4} italic weight={500}>Manuel Gudiño</Title>
-          </Container>
+          </Box>
         </div>}
       </Transition >
 
-      <Container sx={{ marginTop: '.35em' }}>
-        <Text color={dark ? '' : 'black'} size='md' lineClamp={2} sx={{ width: '75%', fontSize: '95%' }}>
+      <Box sx={{ marginTop: '.35em' }}>
+        <Text color={dark ? '' : 'black'} size='md' sx={{ fontSize: '95%' }}>
 
-          <Transition mounted={belowText && (!lang ? browserLanguage : lang) === 'ES' && spanish} transition='fade' duration={400} exitDuration={200} timingFunction='ease' onExited={() => { height > 970 ? setTimeout(function () { setSpanish(false) }, 50) : setSpanish(false) }}>
+          <Transition mounted={belowText && (!lang ? browserLanguage : lang) === 'ES' && spanish} transition='fade' duration={400} exitDuration={200} timingFunction='ease' onExited={() => { (height > 970 && width > 650) ? setTimeout(function () { setSpanish(false) }, 50) : setSpanish(false) }}>
             {(styles) => <div style={styles}>
               Soy un desarrollador web enfocado en construir aplicaciones desde cero, prestando mucha atención al detalle, UX y rendimiento.
             </div>}
           </Transition >
 
-          <Transition mounted={belowText && (!lang ? browserLanguage : lang) === 'EN' && !spanish} transition='fade' duration={400} exitDuration={200} timingFunction='ease' onExited={() => { height > 970 ? setTimeout(function () { setSpanish(true) }, 50) : setSpanish(true) }}>
+          <Transition mounted={belowText && (!lang ? browserLanguage : lang) === 'EN' && !spanish} transition='fade' duration={400} exitDuration={200} timingFunction='ease' onExited={() => { (height > 970 && width > 650) ? setTimeout(function () { setSpanish(true) }, 50) : setSpanish(true) }}>
             {(styles) => <div style={styles}>
               I'm a web developer specializing on building performant applications from scratch, with a focus on detail and user experience.
             </div>}
           </Transition >
         </Text>
-      </Container>
+      </Box>
 
       <Container sx={{ marginTop: '1.75em' }}>
         <Transition mounted={projects && (!lang ? browserLanguage : lang) === 'EN' && !spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
@@ -128,14 +127,14 @@ const Home: React.FC<HomeProps> = ({ browserLanguage }) => {
 
         <Transition mounted={projects && (!lang ? browserLanguage : lang) === 'EN' && !spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
           {(styles) => <div style={styles}>
-            <Text sx={{ fontSize: '95%', width: '97%' }}>Lately, I've been mastering my Nextjs and TypeScript skills. Those have become my go-to's. I've developed Restful APIs with Flask and Express. Regarding design, I prefer CSS-in-JS, but I've worked with SASS, TailwindCSS and many UI component libraries. In past projects, I've mainly used MongoDB for the database. Currently, I'm looking forward to learn Deno, Stitches and Framer Motion.
+            <Text sx={{ fontSize: '95%', width: '97%' }}>Lately, I've been mastering my Nextjs and TypeScript skills. Those have become my go-to's. I've developed Restful APIs with Flask and Express. Regarding design, I prefer CSS-in-JS, but I've worked with SASS, TailwindCSS and many UI component libraries. In past projects, I've mainly used MongoDB as my database.
             </Text>
           </div>}
         </Transition>
 
         <Transition mounted={projects && (!lang ? browserLanguage : lang) === 'ES' && spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
           {(styles) => <div style={styles}>
-            <Text sx={{ fontSize: '95%', width: '97%' }}>Últimamente, estuve perfeccionando mi manejo de Nextjs y TypeScrypt. Para mi, son imprescindibles. He desarrollado Restful APIs con Flask y Express. Hablando de diseño, prefiero CSS-in-JS, pero suelo trabajar con SASS, TailwindCSS o alguna librería de UI components. En mis proyectos, usualmente utilizo MongoDB. Actualmente, estoy interesado en aprender Deno, Stitches y Framer Motion.
+            <Text sx={{ fontSize: '95%', width: '97%' }}>Últimamente, estuve perfeccionando mi manejo de Nextjs y TypeScrypt. Para mi, son imprescindibles. He desarrollado Restful APIs con Flask y Express. Hablando de diseño, prefiero CSS-in-JS, pero suelo trabajar con SASS, TailwindCSS o alguna librería de UI components. En mis proyectos, usualmente utilizo MongoDB.
             </Text>
           </div>}
         </Transition>
@@ -206,13 +205,13 @@ const Home: React.FC<HomeProps> = ({ browserLanguage }) => {
         <Transition mounted={projects && (!lang ? browserLanguage : lang) === 'ES' && spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
           {(styles) => <div style={styles}>
             <Text sx={{ fontSize: '95%', width: '97%' }}>
-              Ponete en contacto conmigo a través de un email a mgudinocontacto@gmail.com o de LinkedIn. Siempre estoy abierto a nuevas oportunidades. Los links están arriba!
+              Ponete en contacto conmigo con un email a mgudinocontacto@gmail.com o por LinkedIn. Siempre estoy abierto a nuevas oportunidades. Los links están arriba!
             </Text>
           </div>}
         </Transition>
       </Container>
 
-    </Box>
+    </Box >
   );
 };
 
