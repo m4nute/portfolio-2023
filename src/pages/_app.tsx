@@ -4,14 +4,22 @@ import { useHotkeys } from '@mantine/hooks'
 import { getCookie, setCookie } from 'cookies-next';
 import type { AppProps, AppContext } from 'next/app';
 import NextApp from 'next/app';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "components/navbar/Navbar";
 import Head from "next/head";
 import Footer from "components/Footer";
+import useLanguage from "hooks/Language";
 
 export default function App(props: AppProps & { colorScheme: ColorScheme, browserLanguage: string }) {
 
   const { Component, pageProps, browserLanguage } = props;
+
+  const { setLanguage } = useLanguage()
+
+  useEffect(() => {
+    setLanguage(browserLanguage)
+  }, [])
+
 
   const [colorScheme, setColorScheme] = useState<ColorScheme>(props.colorScheme);
   const toggleColorScheme = (value?: ColorScheme) => {

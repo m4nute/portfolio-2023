@@ -8,6 +8,7 @@ function Footer() {
     useEffect(() => {
         setMounted(true)
     }, [])
+
     return (
         <Transition mounted={mounted} transition='fade' duration={300} timingFunction='ease'>
             {(styles) => <div style={styles}>

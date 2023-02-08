@@ -2,6 +2,7 @@ import { forwardRef, useState } from 'react';
 import { Group, Avatar, Text, Select, useMantineColorScheme } from '@mantine/core';
 import { Language } from 'tabler-icons-react';
 import { setCookie } from 'cookies-next';
+import useLanguage from 'hooks/Language';
 
 const data = [
     {
@@ -26,7 +27,7 @@ interface ItemProps extends React.ComponentPropsWithoutRef<'div'> {
 
 const SelectItem = forwardRef<HTMLDivElement, ItemProps>(
     ({ image, label, description, ...others }: ItemProps, ref) => (
-        <div ref={ref} {...others} style={{ paddingRight: 3, paddingLeft: 7, paddingBottom: 5, paddingTop: 5, }}>
+        <div ref={ref} {...others} style={{ paddingRight: 3, paddingLeft: 7, paddingBottom: 5, paddingTop: 5, position: 'relative', zIndex: 99 }}>
             <Group noWrap sx={{ display: 'flex', gap: 10, width: '70%' }}>
                 <Avatar size='sm' src={image} sx={{ padding: 0 }} />
                 <div>
@@ -42,7 +43,7 @@ const SelectItem = forwardRef<HTMLDivElement, ItemProps>(
 
 export default function LanguageSelect({ browserLanguage }: { browserLanguage: string }) {
 
-    const [language, setLanguage] = useState(browserLanguage)
+    const { setLanguage } = useLanguage()
 
     const { colorScheme } = useMantineColorScheme();
     const dark = colorScheme === 'dark';
@@ -51,9 +52,7 @@ export default function LanguageSelect({ browserLanguage }: { browserLanguage: s
         <>
             <Select
                 sx={{
-                    width: '6rem', height: 36.79, backgroundColor: dark ? '#373737' : '#E1E1E1', borderRadius: '10px', transition: '.2s all ease', ":hover": {
-                        backgroundColor: dark ? '#434343' : '#CBCBCB'
-                    }
+                    width: '6rem', height: 36.79, backgroundColor: dark ? '#373737' : '#E1E1E1', borderRadius: '10px', transition: '.2s all ease', ":hover": { backgroundColor: dark ? '#434343' : '#CBCBCB' }
                 }}
                 placeholder="Lang"
                 itemComponent={SelectItem}
@@ -63,7 +62,7 @@ export default function LanguageSelect({ browserLanguage }: { browserLanguage: s
                 data={data}
                 variant='unstyled'
                 onChange={(value: string) => { setCookie('language', value, { maxAge: 84600 * 30 }); setLanguage(value) }} // 30 days
-                defaultValue={language}
+                defaultValue={browserLanguage}
                 icon={<Language
                     size={20}
                     strokeWidth={1.5}
