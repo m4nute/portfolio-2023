@@ -109,7 +109,14 @@ const Home: React.FC<HomeProps> = ({ browserLanguage }) => {
       </Container>
 
       <Container sx={{ marginTop: '2em' }}>
-        <Transition mounted={projects} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
+        <Transition mounted={projects && (!lang ? browserLanguage : lang) === 'EN' && !spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
+          {(styles) =>
+            <div style={styles}>
+              <Title italic color={dark ? 'white' : 'black'} order={4} sx={{ paddingBottom: '.4em' }} weight={500}>Stack</Title>
+            </div>}
+        </Transition>
+
+        <Transition mounted={projects && (!lang ? browserLanguage : lang) === 'ES' && spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
           {(styles) =>
             <div style={styles}>
               <Title italic color={dark ? 'white' : 'black'} order={4} sx={{ paddingBottom: '.4em' }} weight={500}>Stack</Title>
@@ -131,7 +138,7 @@ const Home: React.FC<HomeProps> = ({ browserLanguage }) => {
         </Transition>
 
         <Flex direction='column' sx={{ marginTop: '1em' }}>
-          <Transition mounted={projects} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
+          <Transition mounted={projects && (!lang ? browserLanguage : lang) === 'EN' && !spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
             {(styles) => <div style={styles}>
               <Flex>
                 <StackSection title='Frontend' content='JavaScript, React, Nextjs, TypeScript' />
@@ -139,7 +146,17 @@ const Home: React.FC<HomeProps> = ({ browserLanguage }) => {
               </Flex>
             </div>}
           </Transition>
-          <Transition mounted={projects} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
+
+          <Transition mounted={projects && (!lang ? browserLanguage : lang) === 'ES' && spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
+            {(styles) => <div style={styles}>
+              <Flex>
+                <StackSection title='Frontend' content='JavaScript, React, Nextjs, TypeScript' />
+                <StackSection title='Backend' content='NodeJS, Express, Flask, Python' />
+              </Flex>
+            </div>}
+          </Transition>
+
+          <Transition mounted={projects && (!lang ? browserLanguage : lang) === 'EN' && !spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
             {(styles) => <div style={styles}>
               <Flex>
                 <StackSection title='Styling' content='TailwindCSS, SASS, Mantine' />
@@ -147,7 +164,49 @@ const Home: React.FC<HomeProps> = ({ browserLanguage }) => {
               </Flex>
             </div>}
           </Transition>
+
+          <Transition mounted={projects && (!lang ? browserLanguage : lang) === 'ES' && spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
+            {(styles) => <div style={styles}>
+              <Flex>
+                <StackSection title='Diseño' content='TailwindCSS, SASS, Mantine' />
+                <StackSection title='Base de Datos' content='MongoDB, SQLite, MySQL' />
+              </Flex>
+            </div>}
+          </Transition>
         </Flex>
+      </Container>
+
+      <Container sx={{ marginTop: '2em', marginBottom: '1em' }}>
+
+        <Transition mounted={projects && (!lang ? browserLanguage : lang) === 'EN' && !spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
+          {(styles) =>
+            <div style={styles}>
+              <Title italic color={dark ? 'white' : 'black'} order={4} sx={{ paddingBottom: '.4em' }} weight={500}>Get in Touch</Title>
+            </div>}
+        </Transition>
+
+        <Transition mounted={projects && (!lang ? browserLanguage : lang) === 'ES' && spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
+          {(styles) =>
+            <div style={styles}>
+              <Title italic color={dark ? 'white' : 'black'} order={4} sx={{ paddingBottom: '.4em' }} weight={500}>Contactame</Title>
+            </div>}
+        </Transition>
+
+        <Transition mounted={projects && (!lang ? browserLanguage : lang) === 'EN' && !spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
+          {(styles) => <div style={styles}>
+            <Text sx={{ fontSize: '95%', width: '97%' }}>
+              Contact me through my email at mgudinocontacto@gmail.com or through my LinkedIn profile. I'm always open to discuss new opportunities. All links are above!
+            </Text>
+          </div>}
+        </Transition>
+
+        <Transition mounted={projects && (!lang ? browserLanguage : lang) === 'ES' && spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
+          {(styles) => <div style={styles}>
+            <Text sx={{ fontSize: '95%', width: '97%' }}>
+              Ponete en contacto conmigo a través de un email a mgudinocontacto@gmail.com o de LinkedIn. Siempre estoy abierto a nuevas oportunidades. Los links están arriba!
+            </Text>
+          </div>}
+        </Transition>
       </Container>
 
     </Box>
