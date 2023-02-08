@@ -1,8 +1,9 @@
 import { Title, Text, Transition, useMantineColorScheme, Box, Flex } from "@mantine/core";
 import { Container } from "@mantine/core";
-import StackSection from "components/StackSection";
+import StackSection from "components/stack/StackSection";
 import useLanguage from "hooks/Language";
 import { useEffect, useState } from "react";
+import { useViewportSize } from '@mantine/hooks';
 
 interface HomeProps {
   browserLanguage: string;
@@ -12,6 +13,8 @@ const Home: React.FC<HomeProps> = ({ browserLanguage }) => {
 
   const { colorScheme } = useMantineColorScheme();
   const dark = colorScheme === 'dark';
+
+  const { height } = useViewportSize();
 
   const { lang } = useLanguage()
 
@@ -52,13 +55,13 @@ const Home: React.FC<HomeProps> = ({ browserLanguage }) => {
       <Container sx={{ marginTop: '.35em' }}>
         <Text color={dark ? '' : 'black'} size='md' lineClamp={2} sx={{ width: '75%', fontSize: '95%' }}>
 
-          <Transition mounted={belowText && (!lang ? browserLanguage : lang) === 'ES' && spanish} transition='fade' duration={400} exitDuration={200} timingFunction='ease' onExited={() => setTimeout(function () { setSpanish(false) }, 50)}>
+          <Transition mounted={belowText && (!lang ? browserLanguage : lang) === 'ES' && spanish} transition='fade' duration={400} exitDuration={200} timingFunction='ease' onExited={() => { height > 970 ? setTimeout(function () { setSpanish(false) }, 50) : setSpanish(false) }}>
             {(styles) => <div style={styles}>
               Soy un desarrollador web enfocado en construir aplicaciones desde cero, prestando mucha atención al detalle, UX y rendimiento.
             </div>}
           </Transition >
 
-          <Transition mounted={belowText && (!lang ? browserLanguage : lang) === 'EN' && !spanish} transition='fade' duration={400} exitDuration={200} timingFunction='ease' onExited={() => setTimeout(function () { setSpanish(true) }, 50)}>
+          <Transition mounted={belowText && (!lang ? browserLanguage : lang) === 'EN' && !spanish} transition='fade' duration={400} exitDuration={200} timingFunction='ease' onExited={() => { height > 970 ? setTimeout(function () { setSpanish(true) }, 50) : setSpanish(true) }}>
             {(styles) => <div style={styles}>
               I'm a web developer specializing on building performant applications from scratch, with a focus on detail and user experience.
             </div>}

@@ -7,7 +7,7 @@ import NextApp from 'next/app';
 import { useEffect, useState } from "react";
 import Navbar from "components/navbar/Navbar";
 import Head from "next/head";
-import Footer from "components/Footer";
+import Footer from "components/footer/Footer";
 import useLanguage from "hooks/Language";
 
 export default function App(props: AppProps & { colorScheme: ColorScheme, browserLanguage: string }) {
