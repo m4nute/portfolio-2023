@@ -56,14 +56,15 @@ export default function App(props: AppProps & { colorScheme: ColorScheme, browse
           })}>
             <Container sx={{
               maxWidth: 700,
-              margin: '0 auto',
+              margin: '0 auto ',
               paddingLeft: '0',
               paddingRight: '0',
+              paddingTop: 64.79,
               '::-webikit-scrollbar': {
                 width: 10
               }
             }}>
-              <Box sx={{ minHeight: 'calc(100vh - 50px)' }}>
+              <Box sx={{ minHeight: 'calc(100vh - 114.79px)' }}>
                 <Navbar browserLanguage={browserLanguage} />
 
                 <Component {...pageProps} browserLanguage={browserLanguage} />
