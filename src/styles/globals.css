@@ -1,3 +1,8 @@
 .mantine-Select-itemsWrapper {
     padding: 0;
 }
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+}

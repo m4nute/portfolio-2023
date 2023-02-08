@@ -17,6 +17,7 @@ const Home: React.FC<HomeProps> = ({ browserLanguage }) => {
   const [mounted, setMounted] = useState(false)
   const [belowText, setBelowText] = useState(false)
 
+  const [spanish, setSpanish] = useState(browserLanguage === 'ES')
 
 
   useEffect(() => {
@@ -36,17 +37,24 @@ const Home: React.FC<HomeProps> = ({ browserLanguage }) => {
         </div>}
       </Transition >
 
-      <Transition mounted={belowText} transition='pop' duration={400} timingFunction='ease'>
-        {(styles) => <div style={styles}>
-          <Container sx={{ marginTop: '.2em' }}>
-            <Text color={dark ? '' : 'black'} size='md' lineClamp={2} sx={{ width: '80%' }}>
-              {(!lang ? browserLanguage : lang) === 'ES' ? "Soy un desarrollador web enfocado en construir aplicaciones desde cero, prestando mucha atención al detalle, al UX y al rendimiento" : "I'm a web developer focusing in building performant applications from scratch, paying extra attention to detail and UX."}
-            </Text>
-          </Container>
-        </div>}
-      </Transition >
 
+      <Container sx={{ marginTop: '.2em' }}>
+        <Text color={dark ? '' : 'black'} size='md' lineClamp={2} sx={{ width: '90%' }}>
 
+          <Transition mounted={belowText && (!lang ? browserLanguage : lang) === 'ES' && spanish} transition='fade' duration={400} exitDuration={200} timingFunction='ease' onExited={() => setSpanish(false)}>
+            {(styles) => <div style={styles}>
+              Soy un desarrollador web enfocado en construir aplicaciones desde cero, prestando mucha atención al detalle, UX y rendimiento.
+            </div>}
+          </Transition >
+
+          <Transition mounted={belowText && (!lang ? browserLanguage : lang) === 'EN' && !spanish} transition='fade' duration={400} exitDuration={200} timingFunction='ease' onExited={() => setSpanish(true)}>
+            {(styles) => <div style={styles}>
+              I'm a web developer focusing in building performant applications from scratch, paying extra attention to detail and UX.
+            </div>}
+          </Transition >
+
+        </Text>
+      </Container>
     </>
   );
 };
