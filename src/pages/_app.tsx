@@ -28,7 +28,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme, browse
         withGlobalStyles
         withNormalizeCSS
         theme={{
-          fontFamily: 'Roboto, sans-serif',
+          fontFamily: 'Segoe UI, sans-serif',
           colorScheme: colorScheme,
           colors: {
             'light': ['#E1E1E1', '#fcfcfc', '#373737', '#E1E1E1', '#E1E1E1', '#E1E1E1', '#E1E1E1', '#E1E1E1', '#E1E1E1', '#E1E1E1',]
