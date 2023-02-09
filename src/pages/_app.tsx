@@ -64,7 +64,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme, browse
                 width: 10
               }
             }}>
-              <Box sx={{ minHeight: 'calc(100vh - 114.79px)' }}>
+              <Box sx={{ minHeight: 'calc(100vh - 138.79px)' }}>
                 <Navbar browserLanguage={browserLanguage} />
 
                 <Component {...pageProps} browserLanguage={browserLanguage} />

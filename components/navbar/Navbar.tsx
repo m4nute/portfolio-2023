@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import SocialButton from './SocialButton';
 import LanguageSelect from './LanguageSelect';
 import ThemeButton from './ThemeButton';
-import { Container, Flex, Group, useMantineColorScheme, Transition, Collapse, Stack, Burger, Box } from '@mantine/core';
+import { Container, Flex, Group, useMantineColorScheme, Transition, Collapse, Burger, Box } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
 
 function Navbar({ browserLanguage }: { browserLanguage: string }) {
@@ -25,7 +25,7 @@ function Navbar({ browserLanguage }: { browserLanguage: string }) {
     return (
         <Transition mounted={mounted} transition='fade' duration={300} timingFunction='ease'>
             {(styles) => <div style={styles}>
-                <Container sx={{ display: 'flex', justifyContent: 'space-between', padding: '0.5em 1em', borderRadius: '15px', position: 'fixed', zIndex: 99, backgroundColor: dark ? '#292929' : '#ededed', marginTop: '0.75em', top: 0, maxWidth: 700, width: 'calc(100% - 32px)' }}>
+                <Container sx={{ display: 'flex', justifyContent: 'space-between', padding: '.5em 1em', borderRadius: '15px', position: 'fixed', zIndex: 99, backgroundColor: dark ? '#292929' : '#ededed', marginTop: '0.75em', top: 0, maxWidth: 700, width: 'calc(100% - 32px)', '@media (max-width: 550px)': { width: 'calc(100% - 32px)' } }}>
                     {width >= 450 ? <Group spacing='sm'>
                         <SocialButton label='LinkedIn' />
                         <SocialButton label='GitHub' />
@@ -34,6 +34,7 @@ function Navbar({ browserLanguage }: { browserLanguage: string }) {
                     </Group> :
                         <Box>
                             <Burger
+                                size='sm'
                                 sx={{ borderRadius: 10, height: '2.3rem', width: '2.3rem' }}
                                 color={dark ? 'white' : '#505050'}
                                 opened={opened}

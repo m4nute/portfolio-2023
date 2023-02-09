@@ -23,9 +23,7 @@ function Footer({ browserLanguage }: FooterProps) {
 
     return (
         <>
-
-            <Container sx={{ height: 50, flexShrink: 0, paddingLeft: 0, paddingRight: 0 }}>
-
+            <Box sx={{ height: 50 }}>
                 <Transition mounted={mounted && (!lang ? browserLanguage : lang) === 'ES' && spanish} transition='fade' duration={400} exitDuration={200} timingFunction='ease' onExited={() => { height > 970 && width > 650 ? setTimeout(function () { setSpanish(false) }, 50) : setSpanish(false) }}>
                     {(styles) => <div style={styles}>
                         <Divider size='sm' />
@@ -38,28 +36,28 @@ function Footer({ browserLanguage }: FooterProps) {
                     </div>}
                 </Transition>
 
-                <Container sx={{ paddingTop: 10 }}>
+                <Box sx={{ paddingTop: 10, '@media (min-width: 550px)': { padding: '10 16px .7em' } }}>
 
                     <Transition mounted={mounted && (!lang ? browserLanguage : lang) === 'ES' && spanish} transition='fade' duration={400} exitDuration={200} timingFunction='ease'>
                         {(styles) => <div style={styles} className='flex'>
                             <Container sx={{ display: 'flex', justifyContent: 'start', paddingLeft: 0, paddingRight: 0, margin: 0, gap: 10 }}>
-                                <Text fz='sm'>Cambiar tema <Kbd sx={{ marginLeft: 3, transition: '.2s all ease' }}>Ctrl</Kbd> + <Kbd sx={{ transition: '.2s all ease' }}>J</Kbd></Text>
+                                <Text size={width > 550 ? 'md' : 'sm'}>Cambiar tema <Kbd sx={{ marginLeft: 3, transition: '.2s all ease' }}>Ctrl</Kbd> + <Kbd sx={{ transition: '.2s all ease' }}>J</Kbd></Text>
                             </Container>
-                            <Text fz='sm' sx={{ display: 'flex', gap: 4 }}>Hecho por @m4nute</Text>
+                            <Text size={width > 550 ? 'md' : 'sm'} sx={{ display: 'flex', gap: 4 }}>{width > 350 && 'Hecho por'} @m4nute</Text>
                         </div>}
                     </Transition>
 
                     <Transition mounted={mounted && (!lang ? browserLanguage : lang) === 'EN' && !spanish} transition='fade' duration={400} exitDuration={200} timingFunction='ease'>
                         {(styles) => <div style={styles} className='flex'>
                             <Container sx={{ display: 'flex', justifyContent: 'start', paddingLeft: 0, paddingRight: 0, margin: 0, gap: 10 }}>
-                                <Text fz='sm'>Switch theme <Kbd sx={{ marginLeft: 3, transition: '.2s all ease' }}>Ctrl</Kbd> + <Kbd sx={{ transition: '.2s all ease' }}>J</Kbd></Text>
+                                <Text size={width > 550 ? 'md' : 'sm'}>Switch theme <Kbd sx={{ marginLeft: 3, transition: '.2s all ease' }}>Ctrl</Kbd> + <Kbd sx={{ transition: '.2s all ease' }}>J</Kbd></Text>
                             </Container>
-                            <Text fz='sm' sx={{ display: 'flex', gap: 4 }}>Made by @m4nute</Text>
+                            <Text size={width > 550 ? 'md' : 'sm'} sx={{ display: 'flex', gap: 4 }}>{width > 380 && 'Made by'} @m4nute</Text>
                         </div>}
                     </Transition>
 
-                </Container>
-            </Container >
+                </Box>
+            </Box >
 
         </>
     )
