@@ -2,7 +2,7 @@ import { forwardRef, useState } from 'react';
 import { Group, Avatar, Text, Select, useMantineColorScheme } from '@mantine/core';
 import { Language } from 'tabler-icons-react';
 import { setCookie } from 'cookies-next';
-import useLanguage from 'hooks/Language';
+import useLanguage from 'hooks/useLanguage';
 
 const data = [
     {

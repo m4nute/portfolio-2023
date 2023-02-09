@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import Navbar from "components/navbar/Navbar";
 import Head from "next/head";
 import Footer from "components/footer/Footer";
-import useLanguage from "hooks/Language";
+import useLanguage from "hooks/useLanguage";
 
 export default function App(props: AppProps & { colorScheme: ColorScheme, browserLanguage: string }) {
 
