@@ -24,9 +24,9 @@ function Navbar({ browserLanguage }: { browserLanguage: string }) {
     }, [width])
 
     return (
-        <Transition mounted={mounted} transition='fade' duration={300} timingFunction='ease'>
+        <Transition mounted={mounted} transition='fade' duration={400} timingFunction='ease'>
             {(styles) => <div style={styles}>
-                <Container sx={{ display: 'flex', justifyContent: 'space-between', padding: '.5em 1em', borderRadius: '15px', position: 'fixed', zIndex: 99, backgroundColor: useTheme('#292929', '#ededed'), marginTop: '0.75em', top: 0, maxWidth: 700, width: 'calc(100% - 32px)', '@media (max-width: 550px)': { width: 'calc(100% - 32px)' } }}>
+                <Container sx={{ display: 'flex', justifyContent: 'space-between', padding: '.5em 1em', borderRadius: '15px', position: 'fixed', zIndex: 99, backgroundColor: useTheme('#292929', '#ededed'), marginTop: '0.75em', top: 0, maxWidth: 700, width: 'calc(100% - 32px)' }}>
                     {width >= 450 ? <Group spacing='sm'>
                         <SocialButton label='LinkedIn' />
                         <SocialButton label='GitHub' />

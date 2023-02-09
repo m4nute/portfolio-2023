@@ -1,7 +1,7 @@
-import { Title, Text, Transition, Box, Flex, useMantineTheme } from "@mantine/core";
+import { Title, Text, Transition, Box, Flex } from "@mantine/core";
 import StackSection from "components/stack/StackSection";
 import useLanguage from "hooks/useLanguage";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import useDarkMode from "hooks/useDarkMode";
 import useMobileSize from "hooks/useMobileSize";
@@ -16,23 +16,8 @@ const Home = ({ browserLanguage }: { browserLanguage: string }) => {
 
   const { lang } = useLanguage()
 
-  const [mounted, setMounted] = useState(false)
-  const [belowText, setBelowText] = useState(false)
 
   const [spanish, setSpanish] = useState(browserLanguage === 'ES')
-  const [projects, setProjects] = useState(false)
-
-  useEffect(() => {
-    setTimeout(function () {
-      setMounted(true)
-    }, 400);
-    setTimeout(function () {
-      setBelowText(true)
-    }, 700);
-    setTimeout(function () {
-      setProjects(true)
-    }, 1000);
-  }, [])
 
   const projectList = [
     { title: 'TopJobs', desc: spanish ? 'Hice este proyecto para mi clase de POO. TopJobs es un portal de búsqueda laboral que se actualiza diariamente con ofertas de trababo de Reino Unido, utilizando la API de DevitJobsUK. Contiene más de 650 ofertas de cientas de compañías.' : "I made this project for my OOP class. TopJobs is a job search website that's updated daily with job offers from the UK, using the DevitJobsUK API. It contains more than 650 opportunities from hundreds of companies." },
@@ -44,7 +29,7 @@ const Home = ({ browserLanguage }: { browserLanguage: string }) => {
       '@media (min-width: 600px)': { padding: '0 16px' }
     }}>
 
-      <Transition mounted={mounted} transition='pop' duration={400} timingFunction='ease'>
+      <Transition mounted={lang === 'ES' && spanish} transition='fade' duration={400}>
         {(styles) => <div style={styles}>
           <Box sx={{ marginTop: '1.5em' }}>
             <Title color={useTheme('white', 'black')} order={4} italic weight={500}>Manuel Gudiño</Title>
@@ -52,21 +37,30 @@ const Home = ({ browserLanguage }: { browserLanguage: string }) => {
         </div>}
       </Transition >
 
+      <Transition mounted={lang === 'EN' && !spanish} transition='fade' duration={400}>
+        {(styles) => <div style={styles}>
+          <Box sx={{ marginTop: '1.5em' }}>
+            <Title color={useTheme('white', 'black')} order={4} italic weight={500}>Manuel Gudiño</Title>
+          </Box>
+        </div>}
+      </Transition >
+
+
       <Box sx={{ marginTop: '.35em' }}>
         <Text color={useTheme('', 'black')} size='md'>
 
-          <Transition mounted={belowText && lang === 'ES' && spanish} transition='fade' duration={400} exitDuration={200} timingFunction='ease' onExited={() => setSpanish(false)}>
+          <Transition mounted={lang === 'ES' && spanish} transition='fade' duration={400} onExited={() => setSpanish(false)}>
             {(styles) => <div style={styles}>
               <Text size={useMobileFont(550, 16, 14)}>
                 Soy un desarrollador web enfocado en construir aplicaciones desde cero, prestando mucha atención al detalle, UX y rendimiento.
               </Text>
             </div>}
-          </Transition >
+          </Transition>
 
-          <Transition mounted={belowText && lang === 'EN' && !spanish} transition='fade' duration={400} exitDuration={200} timingFunction='ease' onExited={() => setSpanish(true)}>
+          <Transition mounted={lang === 'EN' && !spanish} transition='fade' duration={400} onExited={() => setSpanish(true)}>
             {(styles) => <div style={styles}>
               <Text size={useMobileFont(550, 16, 14)}>
-                I'm a web developer specializing on building performant applications from scratch, with a focus on detail and UX.
+                I'm a web developer specializing on building performant applications from scratch, with a focus on detail and user experience.
               </Text>
             </div>}
           </Transition >
@@ -74,25 +68,25 @@ const Home = ({ browserLanguage }: { browserLanguage: string }) => {
       </Box>
 
       <Box sx={{ marginTop: '1.75em' }}>
-        <Transition mounted={projects && lang === 'EN' && !spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
-          {(styles) =>
-            <div style={styles}>
-              <Title italic color={useTheme('white', 'black')} order={4} sx={{ paddingBottom: '.4em' }} weight={500}>Projects</Title>
-            </div>}
-        </Transition>
 
-        <Transition mounted={projects && lang === 'ES' && spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
+        <Transition mounted={lang === 'ES' && spanish} transition="fade" duration={400}>
           {(styles) =>
             <div style={styles}>
               <Title italic color={useTheme('white', 'black')} order={4} sx={{ paddingBottom: '.4em' }} weight={500}>Proyectos</Title>
             </div>}
         </Transition>
 
+        <Transition mounted={lang === 'EN' && !spanish} transition="fade" duration={400}>
+          {(styles) =>
+            <div style={styles}>
+              <Title italic color={useTheme('white', 'black')} order={4} sx={{ paddingBottom: '.4em' }} weight={500}>Projects</Title>
+            </div>}
+        </Transition>
 
         {projectList.map((project, index) => {
           return (
             <div key={index}>
-              <Transition mounted={projects && lang === 'EN' && !spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
+              <Transition mounted={lang === 'EN' && !spanish} transition="fade" duration={400}>
                 {(styles) => <div style={styles}>
                   <Box sx={{ ":hover": { backgroundColor: useTheme('#212121', '#f6f6f6'), cursor: 'pointer' }, borderRadius: 10, padding: '.6em' }}>
                     <Text color={useTheme('white', 'black')} size='md' weight={500} onClick={() => router.push(`/projects/${project.title}`)}>{project.title}</Text>
@@ -101,7 +95,7 @@ const Home = ({ browserLanguage }: { browserLanguage: string }) => {
                 </div>}
               </Transition>
 
-              <Transition mounted={projects && lang === 'ES' && spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
+              <Transition mounted={lang === 'ES' && spanish} transition="fade" duration={400}>
                 {(styles) => <div style={styles}>
                   <Box sx={{ ":hover": { backgroundColor: useTheme('#212121', '#f6f6f6'), cursor: 'pointer' }, borderRadius: 10, padding: '.6em' }}>
                     <Text color={useTheme('white', 'black')} size='md' weight={500}>{project.title}</Text>
@@ -116,28 +110,28 @@ const Home = ({ browserLanguage }: { browserLanguage: string }) => {
       </Box>
 
       <Box sx={{ marginTop: '1.75em' }}>
-        <Transition mounted={projects && lang === 'EN' && !spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
+        <Transition mounted={lang === 'EN' && !spanish} transition="fade" duration={400}>
           {(styles) =>
             <div style={styles}>
               <Title italic color={useTheme('white', 'black')} order={4} sx={{ paddingBottom: '.4em' }} weight={500}>My Stack</Title>
             </div>}
         </Transition>
 
-        <Transition mounted={projects && lang === 'ES' && spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
+        <Transition mounted={lang === 'ES' && spanish} transition="fade" duration={400}>
           {(styles) =>
             <div style={styles}>
               <Title italic color={useTheme('white', 'black')} order={4} sx={{ paddingBottom: '.4em' }} weight={500}>Mi Stack</Title>
             </div>}
         </Transition>
 
-        <Transition mounted={projects && lang === 'EN' && !spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
+        <Transition mounted={lang === 'EN' && !spanish} transition="fade" duration={400}>
           {(styles) => <div style={styles}>
             <Text size={useMobileFont(550, 16, 14)}>Lately, I've been mastering my Nextjs and TypeScript skills. Those have become my go-to's. I've developed Restful APIs with Flask and Express. Regarding design, I prefer CSS-in-JS, but I've worked with SASS, TailwindCSS and some UI libraries. In my projects I mainly use MongoDB.
             </Text>
           </div>}
         </Transition>
 
-        <Transition mounted={projects && lang === 'ES' && spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
+        <Transition mounted={lang === 'ES' && spanish} transition="fade" duration={400}>
           {(styles) => <div style={styles}>
             <Text size={useMobileFont(550, 16, 14)}>Últimamente, estuve perfeccionando mi manejo de Nextjs y TypeScrypt. He desarrollado Restful APIs con Flask y Express. En cuanto a diseño, prefiero CSS-in-JS, pero suelo trabajar con SASS, TailwindCSS o alguna librería de UI components. En mis proyectos usualmente utilizo MongoDB.
             </Text>
@@ -145,7 +139,7 @@ const Home = ({ browserLanguage }: { browserLanguage: string }) => {
         </Transition>
 
         <Flex direction='column' sx={{ marginTop: '.6em' }}>
-          <Transition mounted={projects && lang === 'EN' && !spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
+          <Transition mounted={lang === 'EN' && !spanish} transition="fade" duration={400}>
             {(styles) => <div style={styles}>
               <Flex>
                 <StackSection title='Frontend' content='JavaScript, React, Nextjs, TypeScript' />
@@ -154,7 +148,7 @@ const Home = ({ browserLanguage }: { browserLanguage: string }) => {
             </div>}
           </Transition>
 
-          <Transition mounted={projects && lang === 'ES' && spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
+          <Transition mounted={lang === 'ES' && spanish} transition="fade" duration={400}>
             {(styles) => <div style={styles}>
               <Flex>
                 <StackSection title='Frontend' content='JavaScript, React, Nextjs, TypeScript' />
@@ -163,7 +157,7 @@ const Home = ({ browserLanguage }: { browserLanguage: string }) => {
             </div>}
           </Transition>
 
-          <Transition mounted={projects && lang === 'EN' && !spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
+          <Transition mounted={lang === 'EN' && !spanish} transition="fade" duration={400}>
             {(styles) => <div style={styles}>
               <Flex>
                 <StackSection title='Styling' content='TailwindCSS, SASS, Mantine' />
@@ -172,7 +166,7 @@ const Home = ({ browserLanguage }: { browserLanguage: string }) => {
             </div>}
           </Transition>
 
-          <Transition mounted={projects && lang === 'ES' && spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
+          <Transition mounted={lang === 'ES' && spanish} transition="fade" duration={400}>
             {(styles) => <div style={styles}>
               <Flex>
                 <StackSection title='Diseño' content='TailwindCSS, SASS, Mantine' />
@@ -185,21 +179,21 @@ const Home = ({ browserLanguage }: { browserLanguage: string }) => {
 
       <Box sx={{ margin: '1.5em 0 1em' }}>
 
-        <Transition mounted={projects && lang === 'EN' && !spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
+        <Transition mounted={lang === 'EN' && !spanish} transition="fade" duration={400}>
           {(styles) =>
             <div style={styles}>
               <Title italic color={useTheme('white', 'black')} order={4} sx={{ paddingBottom: '.4em' }} weight={500}>Get in Touch</Title>
             </div>}
         </Transition>
 
-        <Transition mounted={projects && lang === 'ES' && spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
+        <Transition mounted={lang === 'ES' && spanish} transition="fade" duration={400}>
           {(styles) =>
             <div style={styles}>
               <Title italic color={useTheme('white', 'black')} order={4} sx={{ paddingBottom: '.4em' }} weight={500}>Contactame</Title>
             </div>}
         </Transition>
 
-        <Transition mounted={projects && lang === 'EN' && !spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
+        <Transition mounted={lang === 'EN' && !spanish} transition="fade" duration={400}>
           {(styles) => <div style={styles}>
             <Text size={useMobileFont(550, 16, 14)}>
               Contact me through my email at mgudinocontacto@gmail.com or through my LinkedIn. I'm always open to discuss new opportunities. All links are above!
@@ -207,7 +201,7 @@ const Home = ({ browserLanguage }: { browserLanguage: string }) => {
           </div>}
         </Transition>
 
-        <Transition mounted={projects && lang === 'ES' && spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
+        <Transition mounted={lang === 'ES' && spanish} transition="fade" duration={400}>
           {(styles) => <div style={styles}>
             <Text size={useMobileFont(550, 16, 14)}>
               Ponete en contacto conmigo con un email a mgudinocontacto@gmail.com o por LinkedIn. Siempre estoy abierto a nuevas oportunidades. Los links están arriba!
@@ -221,4 +215,3 @@ const Home = ({ browserLanguage }: { browserLanguage: string }) => {
 };
 
 export default Home;
-

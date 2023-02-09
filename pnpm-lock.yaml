@@ -13,6 +13,7 @@ specifiers:
   '@types/react-dom': 18.0.10
   cookies-next: ^2.1.1
   next: 13.1.6
+  next-i18next: ^13.1.5
   react: 18.2.0
   react-dom: 18.2.0
   tabler-icons-react: ^1.56.0
@@ -32,6 +33,7 @@ dependencies:
   '@types/react-dom': 18.0.10
   cookies-next: 2.1.1
   next: 13.1.6_biqbaboplfbrettd7655fr4n2y
+  next-i18next: 13.1.5_next@13.1.6+react@18.2.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   tabler-icons-react: 1.56.0_react@18.2.0
@@ -592,6 +594,13 @@ packages:
     resolution: {integrity: sha512-XW/Aa8APYr6jSVVA1y/DEIZX0/GMKLEVekNG727R8cs56ahETkRAy/3DR7+fJyh7oUgGwNQaRfXCun0+KbWY7Q==}
     dev: false
 
+  /@types/hoist-non-react-statics/3.3.1:
+    resolution: {integrity: sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==}
+    dependencies:
+      '@types/react': 18.0.27
+      hoist-non-react-statics: 3.3.2
+    dev: false
+
   /@types/node/16.18.12:
     resolution: {integrity: sha512-vzLe5NaNMjIE3mcddFVGlAXN1LEWueUsMsOJWaT6wWMJGyljHAWHznqfnKUQWGzu7TLPrGvWdNAsvQYW+C0xtw==}
     dev: false
@@ -713,6 +722,11 @@ packages:
       '@types/cookie': 0.4.1
       '@types/node': 16.18.12
       cookie: 0.4.2
+    dev: false
+
+  /core-js/3.27.2:
+    resolution: {integrity: sha512-9ashVQskuh5AZEZ1JdQWp1GqSoC1e1G87MzRqg2gIfVAQ7Qn9K+uFj8EcniUFA4P2NLZfV+TOlX1SzoKfo+s7w==}
+    requiresBuild: true
     dev: false
 
   /core-util-is/1.0.3:
@@ -861,6 +875,10 @@ packages:
       entities: 3.0.1
     dev: false
 
+  /i18next-fs-backend/2.1.1:
+    resolution: {integrity: sha512-FTnj+UmNgT3YRml5ruRv0jMZDG7odOL/OP5PF5mOqvXud2vHrPOOs68Zdk6iqzL47cnnM0ZVkK2BAvpFeDJToA==}
+    dev: false
+
   /import-fresh/3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
     engines: {node: '>=6'}
@@ -929,6 +947,24 @@ packages:
     resolution: {integrity: sha512-MqBkQh/OHTS2egovRtLk45wEyNXwF+cokD+1YPf9u5VfJiRdAiRwB2froX5Co9Rh20xs4siNPm8naNotSD6RBw==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
+    dev: false
+
+  /next-i18next/13.1.5_next@13.1.6+react@18.2.0:
+    resolution: {integrity: sha512-gULKQNQmFYIW6C45cb5ZOHa+sw8XUkibFHTqRqrcfbAa1fcBCh3TgX1KtzA0vzeh9R93BkkvFhm+FuhO3kR9jQ==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      i18next: ^22.0.6
+      next: '>= 12.0.0'
+      react: '>= 17.0.2'
+      react-i18next: ^12.1.5
+    dependencies:
+      '@babel/runtime': 7.20.13
+      '@types/hoist-non-react-statics': 3.3.1
+      core-js: 3.27.2
+      hoist-non-react-statics: 3.3.2
+      i18next-fs-backend: 2.1.1
+      next: 13.1.6_biqbaboplfbrettd7655fr4n2y
+      react: 18.2.0
     dev: false
 
   /next/13.1.6_biqbaboplfbrettd7655fr4n2y:
