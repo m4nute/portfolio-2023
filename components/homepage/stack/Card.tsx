@@ -3,7 +3,7 @@ import { Text, Box } from '@mantine/core'
 import { useViewportSize } from '@mantine/hooks';
 import useDarkMode from 'hooks/useDarkMode';
 
-function StackSection({ title, content }: { title: string, content: string }) {
+function Card({ title, content }: { title: string, content: string }) {
 
     const { width } = useViewportSize()
 
@@ -14,4 +14,4 @@ function StackSection({ title, content }: { title: string, content: string }) {
     )
 }
 
-export default StackSection
+export default Card

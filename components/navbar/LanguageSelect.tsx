@@ -1,8 +1,9 @@
-import { forwardRef, useState } from 'react';
-import { Group, Avatar, Text, Select, useMantineColorScheme } from '@mantine/core';
+import { forwardRef } from 'react';
+import { Group, Avatar, Text, Select } from '@mantine/core';
 import { Language } from 'tabler-icons-react';
 import { setCookie } from 'cookies-next';
 import useLanguage from 'hooks/useLanguage';
+import useDarkMode from 'hooks/useDarkMode';
 
 const data = [
     {
@@ -44,35 +45,30 @@ const SelectItem = forwardRef<HTMLDivElement, ItemProps>(
 export default function LanguageSelect({ browserLanguage }: { browserLanguage: string }) {
 
     const { setLanguage } = useLanguage()
-
-    const { colorScheme } = useMantineColorScheme();
-    const dark = colorScheme === 'dark';
+    const useTheme = useDarkMode()
 
     return (
-        <>
-            <Select
-                sx={{
-                    width: '8rem', height: 36.79, backgroundColor: dark ? '#373737' : '#E1E1E1', borderRadius: '10px', transition: '.2s all ease', ":hover": { backgroundColor: dark ? '#434343' : '#CBCBCB' }
-                }}
-                placeholder="Lang"
-                itemComponent={SelectItem}
-                transition="scale"
-                transitionDuration={150}
-                transitionTimingFunction="ease"
-                data={data}
-                variant='unstyled'
-                onChange={(value: string) => { setCookie('language', value, { maxAge: 84600 * 30 }); setLanguage(value) }} // 30 days
-                defaultValue={browserLanguage}
-                icon={<Language
-                    size={20}
-                    strokeWidth={1.5}
-                    color={dark ? 'white' : 'black'}
-                />}
-                filter={(value, item) =>
-                    item?.label?.toLowerCase().includes(value.toLowerCase().trim()) ||
-                    item.description.toLowerCase().includes(value.toLowerCase().trim())
-                }
-            />
-        </>
+        <Select
+            sx={{
+                width: '8rem', height: 36.79, backgroundColor: useTheme('#373737', '#E1E1E1'), borderRadius: '10px', transition: '.2s all ease', ":hover": { backgroundColor: useTheme('#434343', '#CBCBCB') }
+            }}
+            placeholder="Lang"
+            itemComponent={SelectItem}
+            transition="scale"
+            transitionDuration={150}
+            data={data}
+            variant='unstyled'
+            onChange={(value: string) => { setCookie('language', value, { maxAge: 84600 * 30 }); setLanguage(value) }}
+            defaultValue={browserLanguage}
+            icon={<Language
+                size={20}
+                strokeWidth={1.5}
+                color={useTheme('white', 'black')}
+            />}
+            filter={(value, item) =>
+                item?.label?.toLowerCase().includes(value.toLowerCase().trim()) ||
+                item.description.toLowerCase().includes(value.toLowerCase().trim())
+            }
+        />
     );
 }

@@ -1,62 +1,62 @@
 import React, { useEffect, useState } from 'react'
-import SocialButton from './SocialButton';
+import Button from './socials/Button';
 import LanguageSelect from './LanguageSelect';
 import ThemeButton from './ThemeButton';
-import { Container, Flex, Group, Transition, Collapse, Burger, Box } from '@mantine/core';
+import { Flex, Group, Transition, Collapse, Burger, Box } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
 import useDarkMode from 'hooks/useDarkMode';
 
 function Navbar({ browserLanguage }: { browserLanguage: string }) {
 
-    const { width } = useViewportSize();
 
-    const useTheme = useDarkMode()
-
-    const [mounted, setMounted] = useState(false)
     const [opened, setOpened] = useState(false)
-
-    useEffect(() => {
-        setMounted(true)
-    }, [])
+    const useTheme = useDarkMode()
+    const { width } = useViewportSize();
 
     useEffect(() => {
         if (width > 450 && opened) setOpened(false)
     }, [width])
 
     return (
-        <Transition mounted={mounted} transition='fade' duration={400} timingFunction='ease'>
+        <Transition mounted={width !== 0} transition='fade' duration={400}>
             {(styles) => <div style={styles}>
-                <Container sx={{ display: 'flex', justifyContent: 'space-between', padding: '.5em 1em', borderRadius: '15px', position: 'fixed', zIndex: 99, backgroundColor: useTheme('#292929', '#ededed'), marginTop: '0.75em', top: 0, maxWidth: 700, width: 'calc(100% - 32px)' }}>
-                    {width >= 450 ? <Group spacing='sm'>
-                        <SocialButton label='LinkedIn' />
-                        <SocialButton label='GitHub' />
-                        <SocialButton label='Email' />
-                        <SocialButton label='CV' />
-                    </Group> :
-                        <Box>
-                            <Burger
-                                size='sm'
-                                sx={{ borderRadius: 10, height: '2.3rem', width: '2.3rem' }}
-                                color={useTheme('white', '#505050')}
-                                opened={opened}
-                                onClick={() => setOpened((o) => !o)}
-                            />
-                        </Box>}
-                    <Box>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', padding: '.5em 1em', borderRadius: '15px', position: 'fixed', backgroundColor: useTheme('#292929', '#ededed'), marginTop: '0.75em', top: 0, maxWidth: 700, width: 'calc(100% - 32px)' }}>
+
+                    {width >= 450 &&
+                        <Group spacing='sm'>
+                            <Button label='LinkedIn' />
+                            <Button label='GitHub' />
+                            <Button label='Email' />
+                            <Button label='CV' />
+                        </Group>
+                    }
+
+                    {width < 450 &&
+                        <Burger
+                            size='sm'
+                            sx={{ borderRadius: 10, height: '2.3rem', width: '2.3rem' }}
+                            color={useTheme('white', '#505050')}
+                            opened={opened}
+                            onClick={() => setOpened((o) => !o)}
+                        />
+                    }
+
+                    <div>
                         <Flex gap='md' justify='end'>
                             <LanguageSelect browserLanguage={browserLanguage} />
                             <ThemeButton />
                         </Flex>
                         <Collapse in={opened}>
                             <Group spacing='sm' sx={{ marginTop: '.5rem' }}>
-                                <SocialButton label='LinkedIn' />
-                                <SocialButton label='GitHub' />
-                                <SocialButton label='Email' />
-                                <SocialButton label='CV' />
+                                <Button label='LinkedIn' />
+                                <Button label='GitHub' />
+                                <Button label='Email' />
+                                <Button label='CV' />
                             </Group>
                         </Collapse>
-                    </Box>
-                </Container>
+                    </div>
+
+                </Box>
             </div>}
         </Transition>
     )

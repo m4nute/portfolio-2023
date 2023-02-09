@@ -45,7 +45,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme, browse
             fontFamily: 'Segoe UI, sans-serif',
             colorScheme: colorScheme,
             colors: {
-              'light': ['#E1E1E1', '#fcfcfc', '#373737', '#E1E1E1', '#E1E1E1', '#E1E1E1', '#E1E1E1', '#E1E1E1', '#E1E1E1', '#E1E1E1',]
+              'light': ['#E1E1E1', '#fcfcfc', '#373737', '#505050', '#E1E1E1', '#E1E1E1', '#E1E1E1', '#E1E1E1', '#E1E1E1', '#E1E1E1',]
             }
           }}
         >
