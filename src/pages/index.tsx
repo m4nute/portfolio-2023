@@ -1,9 +1,9 @@
 import { Title, Text, Transition, useMantineColorScheme, Box, Flex } from "@mantine/core";
-import { Container } from "@mantine/core";
 import StackSection from "components/stack/StackSection";
 import useLanguage from "hooks/Language";
 import { useEffect, useState } from "react";
 import { useViewportSize } from '@mantine/hooks';
+import { useRouter } from "next/router";
 
 interface HomeProps {
   browserLanguage: string;
@@ -13,6 +13,8 @@ const Home: React.FC<HomeProps> = ({ browserLanguage }) => {
 
   const { colorScheme } = useMantineColorScheme();
   const dark = colorScheme === 'dark';
+
+  const router = useRouter()
 
   const { height, width } = useViewportSize();
 
@@ -95,8 +97,8 @@ const Home: React.FC<HomeProps> = ({ browserLanguage }) => {
             <div key={index}>
               <Transition mounted={projects && (!lang ? browserLanguage : lang) === 'EN' && !spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
                 {(styles) => <div style={styles}>
-                  <Box sx={{ ":hover": { backgroundColor: dark ? '#212121' : '#f6f6f6', cursor: 'pointer' }, borderRadius: 10, padding: '.6em', transition: '0.2s all ease' }}>
-                    <Text color={dark ? 'white' : 'black'} size='md' weight={500}>{project.title}</Text>
+                  <Box sx={{ ":hover": { backgroundColor: dark ? '#212121' : '#f6f6f6', cursor: 'pointer' }, borderRadius: 10, padding: '.6em' }}>
+                    <Text color={dark ? 'white' : 'black'} size='md' weight={500} onClick={() => router.push(`/projects/${project.title}`)}>{project.title}</Text>
                     <Text color={dark ? '' : 'black'} size='sm' lineClamp={3}>{project.desc}</Text>
                   </Box>
                 </div>}
@@ -104,7 +106,7 @@ const Home: React.FC<HomeProps> = ({ browserLanguage }) => {
 
               <Transition mounted={projects && (!lang ? browserLanguage : lang) === 'ES' && spanish} transition="fade" duration={400} exitDuration={200} timingFunction="ease">
                 {(styles) => <div style={styles}>
-                  <Box sx={{ ":hover": { backgroundColor: dark ? '#212121' : '#f6f6f6', cursor: 'pointer' }, borderRadius: 10, padding: '.6em', transition: '0.2s all ease' }}>
+                  <Box sx={{ ":hover": { backgroundColor: dark ? '#212121' : '#f6f6f6', cursor: 'pointer' }, borderRadius: 10, padding: '.6em' }}>
                     <Text color={dark ? 'white' : 'black'} size='md' weight={500}>{project.title}</Text>
                     <Text color={dark ? '' : 'black'} size='sm' lineClamp={3}>{project.desc}</Text>
                   </Box>
