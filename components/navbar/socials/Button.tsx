@@ -12,7 +12,7 @@ function Button({ label }: { label: string }) {
         Email: <Mail size={24} strokeWidth={1.5} color={useTheme('white', '#505050')} onClick={() => window.location.href = 'mailto:mgudinocontacto@gmail.com?'} />,
         GitHub: <BrandGithub onClick={() => window.open('https://github.com/m4nute', '_blank')} size={24}
             strokeWidth={1.5} color={useTheme('white', '#505050')} />,
-        'CV': <FileDescription size={24} strokeWidth={1.5} color={useTheme('white', '#505050')} />,
+        'CV': <FileDescription size={24} strokeWidth={1.5} color={useTheme('white', '#505050')} onClick={() => window.open('https://www.docdroid.net/9XGCx82/cv-manuel-gudino-pdf')} />,
     };
 
     const icon = icons[label];
