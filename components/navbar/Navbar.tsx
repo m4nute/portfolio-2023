@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Button from './socials/Button';
-import LanguageSelect from './LanguageSelect';
-import ThemeButton from './ThemeButton';
+import LanguageSelect from './switches/LanguageSelect';
+import ThemeButton from './switches/ThemeButton';
 import { Flex, Group, Transition, Collapse, Burger, Box } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
 import useDarkMode from 'hooks/useDarkMode';
