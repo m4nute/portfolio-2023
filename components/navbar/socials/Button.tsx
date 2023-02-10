@@ -2,17 +2,19 @@ import React from 'react'
 import { ActionIcon, Tooltip } from '@mantine/core';
 import { BrandLinkedin, BrandGithub, Mail, FileDescription } from 'tabler-icons-react';
 import useDarkMode from 'hooks/useDarkMode';
+import useLanguage from 'hooks/useLanguage';
 
 function Button({ label }: { label: string }) {
 
     const useTheme = useDarkMode()
+    const { lang } = useLanguage()
 
     const icons: { [key: string]: JSX.Element } = {
         LinkedIn: <BrandLinkedin onClick={() => window.open('https://www.linkedin.com/in/manuelgudi%C3%B1o/', '_blank')} size={24} strokeWidth={1.5} color={useTheme('white', '#505050')} />,
         Email: <Mail size={24} strokeWidth={1.5} color={useTheme('white', '#505050')} onClick={() => window.location.href = 'mailto:mgudinocontacto@gmail.com?'} />,
         GitHub: <BrandGithub onClick={() => window.open('https://github.com/m4nute', '_blank')} size={24}
             strokeWidth={1.5} color={useTheme('white', '#505050')} />,
-        'CV': <FileDescription size={24} strokeWidth={1.5} color={useTheme('white', '#505050')} onClick={() => window.open('https://www.docdroid.net/9XGCx82/cv-manuel-gudino-pdf')} />,
+        'CV': <FileDescription size={24} strokeWidth={1.5} color={useTheme('white', '#505050')} onClick={() => window.open(lang === 'ES' ? 'https://docdro.id/M2bYIsJ' : 'https://docdro.id/Pp7KGJF')} />,
     };
 
     const icon = icons[label];
