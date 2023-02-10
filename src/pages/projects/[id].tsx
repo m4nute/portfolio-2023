@@ -50,8 +50,7 @@ export default function projectPage({ browserLanguage }: { browserLanguage: stri
             text2: undefined,
             stack: 'React, Nextjs, Mantine, Zustand',
             repo: 'https://github.com/m4nute/portfolio-2023',
-            web: 'https://manuelgudino.vercel.app'
-
+            web: undefined
         }
     }
 

@@ -3,7 +3,7 @@ import { IconBrandGithub, IconAppWindow } from '@tabler/icons-react'
 import useDarkMode from 'hooks/useDarkMode'
 import React from 'react'
 
-function Links({ repo, web }: { repo: string | undefined, web: string }) {
+function Links({ repo, web }: { repo: string | undefined, web: string | undefined }) {
 
     const useTheme = useDarkMode()
 
