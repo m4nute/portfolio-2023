@@ -46,7 +46,7 @@ export default function projectPage({ browserLanguage }: { browserLanguage: stri
             text: spanish ?
                 "Sí, este mismo proyecto. Antes de arrancarlo, me propuse a dedicarle todo el tiempo que necesitase para dejarlo perfecto. Ya habiéndolo pulido, me siento bastante orgulloso de cómo quedó. Lo hice con Nextjs, y exploré algunos temas que tenía pendientes, como el Dark Mode y múltiples idiomas."
                 :
-                "Yes, the one you're looking at. I really wanted this portfolio to last at least half a year. Im proud of how it turned out to be. I built it with Nextjs, exploring interesting topics such as Dark Theme and multiple languages, and persisting them through cookies and SSR.",
+                "Yes, the one you're looking at. I really wanted this portfolio to last for at least six months. I'm proud of how it turned out to be. I built it with Nextjs, exploring interesting topics such as Dark Theme and multiple languages, and persisted them through cookies and SSR.",
             text2: undefined,
             stack: 'React, Nextjs, Mantine, Zustand',
             repo: 'https://github.com/m4nute/portfolio-2023',
