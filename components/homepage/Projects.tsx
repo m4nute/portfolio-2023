@@ -28,7 +28,7 @@ function Projects({ spanish }: { spanish: boolean }) {
         : "Yes, the one you're looking at. I really wanted this portfolio to last at least half an year. Im proud of how it turned out to be. I built it with Nextjs, exploring interesting topics such as Dark Theme and multiple languages, and persisting them through cookies and SSR.",
     },
     {
-      title: "Chat App",
+      title: "Chat",
       desc: spanish
         ? "Aplicación de Chat en tiempo real hecha con Nextjs 12, Tailwind y Supabase. Incluye autenticación con Google y credenciales, salas de chat privadas, Realtime tanto para los mensajes dentro de un chat y también para la lista de chats, que se actualiza y ordena automáticamente al recibir o enviar mensajes. Hice este proyecto para aprender Supabase y React Query."
         : "Real-time chat application built with Next.js 12 and Supabase. Includes authentication with Google and credentials, private chat rooms, Realtime for both messages within a chat and also for the chat list, which updates and sorts automatically upon receiving or sending messages. I built this project to learn Supabase and React Query.",
