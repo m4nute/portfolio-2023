@@ -46,7 +46,7 @@ export default function projectPage({ browserLanguage }: { browserLanguage: stri
       repo: "https://github.com/m4nute/portfolio-2023",
       web: undefined,
     },
-    "chat-app": {
+    chat: {
       title: "Realtime Chat",
       text: spanish
         ? "Aplicación de Chat en tiempo real hecha con Nextjs 12, Tailwind y Supabase. Incluye autenticación con Google y credenciales, salas de chat privadas, Realtime tanto para los mensajes dentro de un chat y también para la lista de chats, que se actualiza y ordena automáticamente al recibir o enviar mensajes. Hice este proyecto para aprender Supabase y React Query."
