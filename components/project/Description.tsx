@@ -1,29 +1,19 @@
-import useMobileSize from 'hooks/useMobileSize'
-import React from 'react'
-import { Text } from '@mantine/core'
+import useMobileSize from "hooks/useMobileSize"
+import React from "react"
+import { Text } from "@mantine/core"
 
-export default function Description({ text, text2 }: { text: string, text2: string | undefined }) {
+export default function Description({ text, text2 }: { text: string; text2: string | undefined }) {
+  const { useMobileFont } = useMobileSize()
 
-    const { useMobileFont } = useMobileSize()
-
-    return (
+  return (
+    <>
+      <Text size={useMobileFont(550, 16, 14)}>{text}</Text>
+      {text2 && (
         <>
-            <Text size={useMobileFont(550, 16, 14)}>
-                {text}
-            </Text>
-            {text2 &&
-                <>
-                    <br />
-                    <Text size={useMobileFont(550, 16, 14)}>
-                        {text2}
-                    </Text>
-                </>
-            }
-
+          <br />
+          <Text size={useMobileFont(550, 16, 14)}>{text2}</Text>
         </>
-    )
-}
-
-Description.defaultProps = {
-
+      )}
+    </>
+  )
 }
