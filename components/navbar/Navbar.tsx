@@ -31,6 +31,7 @@ function Navbar({ browserLanguage }: { browserLanguage: string }) {
               top: 0,
               maxWidth: 700,
               width: "calc(100% - 32px)",
+              zIndex: 50
             }}>
             {width >= 450 && (
               <Group spacing="sm">
