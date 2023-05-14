@@ -22,7 +22,7 @@ export default function projectPage({ browserLanguage }: { browserLanguage: stri
         : "This was my first interaction with Nextjs, so I had no idea how SSG and SSR worked. Nevertheless, I started coding and learned along the way. PedaStore, despite being a standard E-commerce platform, really helped me to learn and understand how Nextjs and TailwindCSS work.",
       stack: "TypeScript, Nextjs, TailwindCSS, MongoDB, Zustand",
       repo: "https://github.com/m4nute/next-ecommerce",
-      web: "https://pedastore.vercel.app",
+      web: "https://pedastore.vercel.app"
     },
     topjobs: {
       title: "TopJobs",
@@ -34,7 +34,7 @@ export default function projectPage({ browserLanguage }: { browserLanguage: stri
         : "I made this project for my OOP class, with my classmate Fede. It was my first big project, and I learned a lot of things working on it, such as React Context API and user authentication with JWT, among other tools.",
       stack: "React, Flask, SQLite, Zustand, SASS",
       repo: undefined,
-      web: "https://topjobs.netlify.app",
+      web: "https://topjobs.netlify.app"
     },
     portfolio: {
       title: "Portfolio",
@@ -44,7 +44,7 @@ export default function projectPage({ browserLanguage }: { browserLanguage: stri
       text2: undefined,
       stack: "React, Nextjs, Mantine, Zustand",
       repo: "https://github.com/m4nute/portfolio-2023",
-      web: undefined,
+      web: undefined
     },
     chat: {
       title: "Chat",
@@ -54,8 +54,20 @@ export default function projectPage({ browserLanguage }: { browserLanguage: stri
       text2: undefined,
       stack: "Nextjs, TailwindCSS, Supabase, Zustand, React Query",
       repo: "https://github.com/m4nute/next-supa-chat",
-      web: "https://m4nute-chat.vercel.app",
+      web: "https://m4nute-chat.vercel.app"
     },
+    blog: {
+      title: "Blog",
+      text: spanish
+        ? "Blog personal en el que hablo sobre las tecnologías que me apasionan y comparto mis experiencias y conocimientos sobre las mismas."
+        : "Personal blog where I talk about the technologies I'm passionate about and share my experiences and knowledge about them.",
+      text2: spanish
+        ? "Con este proyecto experimenté con Markdown y MDX por primera vez. A su vez, incorporé Contentlayer y varios rehypePlugins para los bloques de código y otros detalles."
+        : "With this project I experimented with Markdown and MDX for the first time. I also included Contentlayer and some other rehypePlugins to make the code blocks look better.",
+      stack: "Nextjs 13, Contentlayer, TailwindCSS",
+      repo: "https://github.com/m4nute/next-contentlayer",
+      web: "https://manuelgudino-blog.vercel.app"
+    }
   }
 
   const router = useRouter()
