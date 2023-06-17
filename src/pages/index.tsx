@@ -7,7 +7,7 @@ import Stack from "components/homepage/Stack"
 import Contact from "components/homepage/Contact"
 
 export const config = {
-  runtime: "edge"
+  runtime: "experimental-edge"
 }
 
 export default function Home({ browserLanguage }: { browserLanguage: string }) {
