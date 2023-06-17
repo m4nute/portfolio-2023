@@ -5,6 +5,7 @@ import Intro from "components/homepage/Intro"
 import Projects from "components/homepage/Projects"
 import Stack from "components/homepage/Stack"
 import Contact from "components/homepage/Contact"
+import Experience from "components/homepage/Experience"
 
 export default function Home({ browserLanguage }: { browserLanguage: string }) {
   const { lang } = useLanguage()
@@ -31,6 +32,7 @@ export default function Home({ browserLanguage }: { browserLanguage: string }) {
         {(styles) => (
           <div style={styles}>
             <Intro spanish />
+            <Experience spanish />
             <Projects spanish />
             <Stack spanish />
             <Contact spanish />
@@ -47,6 +49,7 @@ export default function Home({ browserLanguage }: { browserLanguage: string }) {
         {(styles) => (
           <div style={styles}>
             <Intro />
+            <Experience />
             <Projects />
             <Stack />
             <Contact />

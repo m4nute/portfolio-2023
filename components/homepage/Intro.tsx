@@ -20,9 +20,9 @@ function Intro({ spanish }: { spanish: boolean }) {
         <Text size={useMobileFont(550, 16, 14)}>
           {spanish
             ? "Soy un desarrollador web enfocado en construir aplicaciones desde cero, prestando mucha atención al detalle, UX y rendimiento. Si querés saber más de mi, te dejo mi "
-            : "I'm a web developer specializing on building performant applications from scratch, with a focus on detail and user experience. If you wanna know me more, check out my "}
+            : "I'm a web developer specializing on building performant applications from scratch, with a focus on detail and UX. If you wanna know more about me, check out my "}
           <Link href="https://manuelgudino-blog.vercel.app" target="_blank" className="text-white">
-            Blog
+            blog
           </Link>
           .
         </Text>
