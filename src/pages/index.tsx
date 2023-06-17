@@ -6,10 +6,6 @@ import Projects from "components/homepage/Projects"
 import Stack from "components/homepage/Stack"
 import Contact from "components/homepage/Contact"
 
-export const config = {
-  runtime: "experimental-edge"
-}
-
 export default function Home({ browserLanguage }: { browserLanguage: string }) {
   const { lang } = useLanguage()
   const [spanish, setSpanish] = useState(browserLanguage === "ES")
